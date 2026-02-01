@@ -11,18 +11,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/api/items")
 public class ItemController {
 
-    private final ItemService itemService;
-    private final UserService userService;
+    @Autowired
+    private ItemService itemService;
 
-    public ItemController(ItemService itemService, UserService userService) {
-        this.itemService = itemService;
-        this.userService = userService;
-    }
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public List<Item> getAllItems(@RequestParam(required = false) Item.ItemType type) {

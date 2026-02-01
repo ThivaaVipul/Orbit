@@ -2,6 +2,7 @@ package com.orbit.backend.service;
 
 import com.orbit.backend.entity.User;
 import com.orbit.backend.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -10,11 +11,8 @@ import java.util.Base64;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     public User registerUser(String username, String password, String email, String phoneNumber) {
         if (userRepository.existsByUsername(username)) {

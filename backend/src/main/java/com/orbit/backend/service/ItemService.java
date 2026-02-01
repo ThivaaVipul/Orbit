@@ -3,6 +3,7 @@ package com.orbit.backend.service;
 import com.orbit.backend.entity.Item;
 import com.orbit.backend.entity.User;
 import com.orbit.backend.repository.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,11 +15,8 @@ import java.util.Optional;
 @Service
 public class ItemService {
 
-    private final ItemRepository itemRepository;
-
-    public ItemService(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-    }
+    @Autowired
+    private ItemRepository itemRepository;
 
     public List<Item> getAllItems(Item.ItemType type) {
         if (type != null) {
